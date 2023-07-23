@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script
+      src="https://kit.fontawesome.com/dcd23d6329.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <img src="images/logo.png" class="logo" />
+      </div>
+      <div class="content">
+        <div class="text">
+          <h1>
+            I have found that among its other benefits giving liberates the soul
+            of the giver.
+          </h1>
+          <p>Maya Angelou</p>
+        </div>
+      </div>
+    </div>
+    <div class="content cards-text-div">
+      <div class="text">
+        <h1 id="cards-text">
+          <span>Find your favorite charity</span>
+        </h1>
+      </div>
+    </div>
+    <div id="filter">
+      <div id="classification">
+        <select
+          name="classification"
+          id="classification-choice"
+          onchange="getClassifiedCharities(this)"
+        >
+          <option value="Choose Organization">Choose Organization</option>
+          <option value="Religious Organization">Religious Organization</option>
+          <option value="Charitable Organization">
+            Charitable Organization
+          </option>
+          <option value="Educational Organization">
+            Educational Organization
+          </option>
+          <option value="Charitable Organization">
+            Charitable Organization
+          </option>
+          <option value="Pleasure, Recreational, or Social Club">
+            Pleasure, Recreational, or Social Club
+          </option>
+          <option value="Labor Organization">Labor Organization</option>
+          <option value="Post or Organization of War Veterans">
+            Post or Organization of War Veterans
+          </option>
+          <option value="Domestic Fraternal Societies and Associations">
+            Domestic Fraternal Societies and Associations
+          </option>
+          <option value="Board of Trade">Board of Trade</option>
+          <option value="Chamber of Commerce">Chamber of Commerce</option>
+          <option value="Fraternal Beneficiary Society, Order or Association">
+            Fraternal Beneficiary Society, Order or Association
+          </option>
+          <option value="Cemetery Company">Cemetery Company</option>
+          <option value="Social Welfare Organization">
+            Social Welfare Organization
+          </option>
+          <option value="Civic League">Civic League</option>
+          <option value="Business League">Business League</option>
+        </select>
+      </div>
+      <div id="search">
+        <input
+          id="charitySpecific"
+          type="text"
+          placeholder="Charity Name"
+          oninput="filltritng()"
+        />
+        <div id="search-button-div">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+      </div>
+
+      <div id="results"><span id="resultsNumber">49</span>Results</div>
+    </div>
+    <div id="charity-container"></div>
+    <div id="charities-container"></div>
+    <script id="charity-template" type="text/x-handlebars-template">
+      <div class="charity">
+        <div class="close-div">
+          <span class="close" onclick="closeCharityInfo()">&times;</span>
+        </div>
+        <div class="charityInfo">
+          <div id="name-desc">
+            <h1 id="name">{{name}}</h1>
+            <div id="description-text">Description</div>
+            <div id="description">{{description}}</div>
+          </div>
+          <div id="total-website">
+            <div id="total">Total Donations: {{total}}₪</div>
+            <div><a id="website" href="{{website}}">Visit Website</a></div>
+          </div>
+        </div>
+        <div class="donate">
+          <h1 id="donateHeader">Donate</h1>
+          <div id="nameOfdonerDiv">
+            <label for="name">Name</label><br />
+            <input
+              type="text"
+              id="nameOfdoner"
+              placeholder="Full Name"
+              required
+            />
+          </div>
+          <div id="amoundDiv">
+            <label for="amount">Amount</label><br />
+            <input
+              class="mask"
+              type="number"
+              id="amount"
+              min="1"
+              placeholder="Donation Amount"
+              required
+            />
+          </div>
+          <div id="donateNowDiv"><button
+              id="donateNow"
+              onclick="donait(this)"
+            >Donate Now</button></div>
+        </div>
+      </div>
+    </script>
+
+    <script id="charities-template" type="text/x-handlebars-template">
+      <div class="cards">
+        {{#each item}}
+          <div class="card" onclick="getInfoFromDiv(this)">
+            <img class="card-img" src="{{img}}" alt="" />
+            <div class="card-content">
+              <h3 class="card-name">{{name}}</h3>
+              <p class="card-class">{{classification}}</p>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </script>
+    <script src="./handlebars/dist/handlebars.js"></script>
+    <script src="./jquery/dist/jquery.js"></script>
+    <script src="./Renderer.js"></script>
+    <script src="./CharityApi.js"></script>
+    <script src="./controller.js"></script>
+  </body>
+</html>

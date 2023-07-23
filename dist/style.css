@@ -1,0 +1,416 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+/*! Open Page */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background-color: #EBDCE6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}
+.container {
+  height: 100vh;
+  width: 100%;
+  background-image: url(images/bg.png);
+  background-position: center;
+  background-size: cover;
+  padding-right: 3%;
+  padding-left: 5%;
+  box-sizing: border-box;
+  position: relative;
+}
+.header {
+  width: 100%;
+  height: 15vh;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+.logo {
+  width: 80px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.content .text h1 {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-top: 80px;
+  line-height: 1.5em;
+  letter-spacing: 0.1em;
+  font-size: 40px;
+  color: #fff;
+}
+.content .text h1 span {
+  font-size: 50px;
+}
+.content .text p {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin-top: 40px;
+  color: #030303;
+}
+
+/*! Filter */
+
+.cards-text-div {
+  margin-bottom: 30px;
+  border-top: 2px solid white;
+}
+
+#filter {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr 8fr 2fr;
+  height: 70px;
+  align-items: center;
+}
+
+#classification {
+  margin: 0 20px;
+}
+
+#classification-choice {
+  width: 100%;
+  height: 40px;
+  border: 2px solid white;
+  outline: none;
+  box-sizing: border-box;
+}
+
+#search {
+  margin: 0 20px;
+  position: relative;
+}
+
+#charitySpecific {
+  width: 100%;
+  height: 40px;
+  padding-left: 10px;
+  border: 2px solid white;
+  outline: none;
+  box-sizing: border-box;
+  transition: 0.5s ease-in-out;
+}
+
+#charitySpecific:focus {
+  border: 2px solid #783C5A;
+}
+
+#search-button-div {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+}
+
+#fa-magnifying-glass {
+  font-size: 20px;
+}
+
+#results {
+  margin: 0 20px;
+  font-size: 20px;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#resultsNumber {
+  margin-right: 5px;
+}
+
+/*! Cards */
+
+.cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  text-align: center;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  position: relative;
+  transition: all 300ms ease-in-out;
+  margin: 20px;
+  background-color: #82D2DC;
+}
+.card:hover {
+  transform: scale(1.05, 1.05);
+    color: black;
+}
+
+.card-img {
+  object-fit: cover;
+    width: 100%;
+    height: 300px;
+}
+
+.card-content {
+  padding: 20px 20px;
+}
+
+.card-name {
+  font-weight: 600;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.card-class {
+  text-align: center;
+}
+
+@media (max-width: 650px) {
+  .cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (min-width: 651px) and (max-width: 1000px){
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/*  */
+
+/*!  */
+
+/* Modal Content */
+#charity-container {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+.close {
+  color: black;
+  float: inline-start;
+  float: right;
+  font-size: 35px;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+}
+
+.close:hover,
+.close:focus {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/*  */
+
+.charity {
+  border: 1px solid black;
+  background-color: #E6D7E2;
+  margin: auto;
+  border: 1px solid #888;
+  width: 90%;
+  display: flex;
+  height: 450px;
+  font-family: "Poppins", sans-serif;
+}
+
+.charityInfo {
+  background-color: white;
+  padding: 15px;
+  width: 60%;
+}
+
+#name-desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 70%;
+  text-align: center;
+}
+
+#name {
+  /* margin-top: 30px; */
+  font-size: 30px;
+}
+
+#description-text {
+  font-size: 20px;
+}
+
+#description {
+  font-size: 20px;
+  padding: 0 10px;
+}
+
+#total-website {
+  height: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+#total {
+  background-color: #F05537;
+  padding: 10px;
+  color: white;
+}
+
+#website {
+  color: #F05537;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+#website:hover {
+  color: black;
+}
+
+.close-div {
+  position: relative;
+}
+
+/* .top-doners {
+  margin-top: 30px;
+  padding: 15px;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#top-doners-header {
+  font-size: 20px;
+}
+
+.donation {
+
+}
+
+.doner-name {
+
+}
+
+.donation-amount {
+  margin-top: 10px;
+} */
+
+.donate {
+  margin-top: 30px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-around;
+  font-size: 20px;
+  width: 40%;
+}
+
+#donateHeader {
+  font-size: 30px;
+}
+
+#nameOfdoner, #amount {
+  border: 2px solid white;
+  outline: none;
+  box-sizing: border-box;
+  transition: 0.5s ease-in-out;
+  height: 40px;
+  margin-top: 10px;
+  width: 100%;
+  padding: 0 10px;
+}
+
+#nameOfdoner:hover, #amount:hover {
+  border: 2px solid #783C5A;
+}
+
+#nameOfdonerDiv, #amoundDiv, #donateNowDiv {
+  margin: 0 20px;
+}
+
+#donateNow {
+  width: 70%;
+  background-color: #F05537;
+  border: 2px solid #F05537;
+  color: white;
+  padding: 10px;
+  transition: 500ms ease-in-out;
+  font-size: 15px;
+}
+
+#donateNow:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid #F05537;
+}
